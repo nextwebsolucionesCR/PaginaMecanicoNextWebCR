@@ -1,0 +1,519 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Política de Privacidad | Taller PuraVida</title>
+    <meta name="description" content="Política de privacidad y términos de uso de Taller PuraVida.">
+    <link rel="canonical" href="https://tallerpuravida.com/privacidad">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Barlow:wght@300;400;500;600;700&family=Oswald:wght@400;500;600;700&display=swap"
+        rel="stylesheet">
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    fontFamily: {
+                        'display': ['Oswald', 'sans-serif'],
+                        'body': ['Barlow', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        :root {
+            --bg: #FAFAFA;
+            --bg-alt: #F0F0F0;
+            --fg: #0A0A0A;
+            --fg-muted: #666666;
+            --accent: #E53935;
+            --card: #FFFFFF;
+            --card-border: rgba(0, 0, 0, 0.08);
+            --glass-bg: rgba(255, 255, 255, 0.85);
+            --glass-border: rgba(255, 255, 255, 0.3);
+        }
+
+        .dark {
+            --bg: #0A0A0A;
+            --bg-alt: #121212;
+            --fg: #FAFAFA;
+            --fg-muted: #999999;
+            --accent: #FF1744;
+            --card: #1A1A1A;
+            --card-border: rgba(255, 255, 255, 0.08);
+            --glass-bg: rgba(26, 26, 26, 0.85);
+            --glass-border: rgba(255, 255, 255, 0.1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Barlow', sans-serif;
+            background: var(--bg);
+            color: var(--fg);
+            overflow-x: hidden;
+            transition: background 0.4s ease, color 0.4s ease;
+        }
+
+        .font-display {
+            font-family: 'Oswald', sans-serif;
+            font-weight: 600;
+            letter-spacing: 0.05em;
+            text-transform: uppercase;
+        }
+
+        h1,
+        h2,
+        h3,
+        h4,
+        h5,
+        h6 {
+            font-family: 'Oswald', sans-serif;
+            font-weight: 600;
+            letter-spacing: 0.03em;
+            text-transform: uppercase;
+        }
+
+        .glass-card {
+            background: var(--glass-bg);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid var(--glass-border);
+        }
+
+        /* NextWeb CR Badge */
+        .nextweb-badge {
+            position: fixed;
+            bottom: 100px;
+            right: 20px;
+            z-index: 1000;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 8px 16px;
+            background: rgba(10, 10, 10, 0.9);
+            backdrop-filter: blur(8px);
+            border: 1px solid #FFB300;
+            border-radius: 12px;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+        }
+
+        .nextweb-badge:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(255, 179, 0, 0.2);
+            border-color: #FFD54F;
+        }
+
+        .nextweb-badge img {
+            height: 24px;
+            width: auto;
+        }
+
+        .nextweb-badge span {
+            color: #FFFFFF;
+            font-family: 'Barlow', sans-serif;
+            font-size: 14px;
+            white-space: nowrap;
+        }
+
+        .nextweb-badge b {
+            color: #FFFFFF;
+            font-weight: 700;
+        }
+
+        .noise-overlay {
+            position: fixed;
+            inset: 0;
+            pointer-events: none;
+            z-index: 9999;
+            opacity: 0.03;
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+        }
+
+        /* Navbar Visibility Fixes */
+        body.dark-hero #navbar:not(.scrolled) .font-display,
+        body.dark-hero #navbar:not(.scrolled) .nav-link,
+        body.dark-hero #navbar:not(.scrolled) i,
+        body.dark-hero #navbar:not(.scrolled) .lang-text {
+            color: #FFFFFF !important;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+        }
+
+        body.dark-hero #navbar:not(.scrolled) .glass-card {
+            background: rgba(0, 0, 0, 0.3) !important;
+            border-color: rgba(255, 255, 255, 0.1) !important;
+        }
+
+        #navbar .font-display,
+        #navbar .lang-text,
+        #navbar i {
+            color: var(--fg) !important;
+            transition: color 0.3s ease;
+        }
+
+        #navbar .nav-link {
+            color: var(--fg) !important;
+            font-weight: 600;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            display: inline-block;
+        }
+
+        #navbar .nav-link:hover {
+            color: var(--accent) !important;
+            text-shadow: 0 0 15px rgba(229, 57, 53, 0.3);
+            /* using local hex for accent-glow */
+            transform: translateY(-2px);
+        }
+    </style>
+</head>
+
+<body class="font-body">
+    <div class="noise-overlay"></div>
+
+    <!-- Navigation -->
+    <nav id="navbar" class="fixed top-0 left-0 right-0 z-50 transition-all duration-500">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-20">
+                <a href="index.html" class="flex items-center gap-3">
+                    <img src="https://res.cloudinary.com/dicrov8ka/image/upload/v1771890897/logotaller_rhzi7m.png"
+                        alt="Taller PuraVida" class="h-12 w-auto">
+                    <span class="font-display text-xl hidden sm:block" style="color: var(--fg);">PuraVida</span>
+                </a>
+
+                <div class="flex items-center gap-3">
+                    <button id="lang-toggle"
+                        class="flex items-center gap-2 px-3 py-2 rounded-lg glass-card text-sm font-medium"
+                        style="color: var(--fg);" aria-label="Cambiar idioma">
+                        <i class="fas fa-globe"></i>
+                        <span class="lang-text">ES</span>
+                    </button>
+                    <button id="theme-toggle" class="w-10 h-10 rounded-lg glass-card flex items-center justify-center"
+                        aria-label="Cambiar tema">
+                        <i class="fas fa-moon" style="color: var(--fg);"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Content -->
+    <section class="pt-32 pb-20">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-12">
+                <span
+                    class="inline-block px-4 py-1 text-sm font-medium bg-[#E53935]/10 text-[#E53935] rounded-full mb-6"
+                    data-i18n="privacy_label">Aviso Legal</span>
+                <h1 class="font-display text-3xl sm:text-4xl lg:text-5xl mb-4" style="color: var(--fg);"
+                    data-i18n="privacy_title">Política de Privacidad</h1>
+                <p class="text-sm" style="color: var(--fg-muted);">Última actualización: Enero 2024</p>
+            </div>
+
+            <div class="glass-card rounded-2xl p-8 sm:p-12 space-y-8" style="color: var(--fg-muted);">
+                <div class="p-6 rounded-xl bg-[#E53935]/10 border-l-4 border-[#E53935]">
+                    <div class="flex items-start gap-4">
+                        <i class="fas fa-exclamation-triangle text-2xl text-[#E53935] mt-1"></i>
+                        <div>
+                            <h3 class="font-display text-lg mb-2" style="color: var(--fg);"
+                                data-i18n="privacy_notice_title">Aviso Importante</h3>
+                            <p data-i18n="privacy_notice_text">Esta página web NO es oficial y solo es una página web de
+                                ejemplo. Las imágenes y videos mostrados no buscan suplantar la identidad de nadie, ya
+                                sea vivo o muerto. Todo el contenido visual ha sido generado con inteligencia artificial
+                                con fines demostrativos.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div>
+                    <h2 class="font-display text-xl mb-4" style="color: var(--fg);" data-i18n="privacy_section1_title">
+                        1. Información del Sitio</h2>
+                    <p data-i18n="privacy_section1_text">Este sitio web ha sido creado únicamente con propósitos
+                        educativos y de demostración. No representa a ninguna empresa real ni ofrece servicios
+                        comerciales activos. Cualquier similitud con nombres, lugares o situaciones reales es pura
+                        coincidencia.</p>
+                </div>
+
+                <div>
+                    <h2 class="font-display text-xl mb-4" style="color: var(--fg);" data-i18n="privacy_section2_title">
+                        2. Contenido Generado por IA</h2>
+                    <p data-i18n="privacy_section2_text">Todas las imágenes, videos y textos presentes en este sitio web
+                        han sido generados mediante herramientas de inteligencia artificial. Estos elementos no
+                        representan personas, lugares o situaciones reales. El uso de este material es exclusivamente
+                        ilustrativo.</p>
+                </div>
+
+                <div>
+                    <h2 class="font-display text-xl mb-4" style="color: var(--fg);" data-i18n="privacy_section3_title">
+                        3. Datos de Contacto</h2>
+                    <p data-i18n="privacy_section3_text">Los números de teléfono, correos electrónicos y direcciones
+                        mostrados en este sitio son ficticios y han sido incluidos únicamente para mostrar la
+                        funcionalidad del sitio web. No intentes contactar a través de estos medios.</p>
+                </div>
+
+                <div>
+                    <h2 class="font-display text-xl mb-4" style="color: var(--fg);" data-i18n="privacy_section4_title">
+                        4. Uso de Cookies</h2>
+                    <p data-i18n="privacy_section4_text">Este sitio utiliza localStorage para guardar preferencias del
+                        usuario como el idioma seleccionado y el modo oscuro. No se recopila información personal ni se
+                        comparten datos con terceros.</p>
+                </div>
+
+                <div>
+                    <h2 class="font-display text-xl mb-4" style="color: var(--fg);" data-i18n="privacy_section5_title">
+                        5. Derechos de Autor</h2>
+                    <p data-i18n="privacy_section5_text">El diseño y código fuente de este sitio web son de uso libre
+                        para fines educativos. El contenido multimedia generado por IA no tiene derechos de autor
+                        comerciales.</p>
+                </div>
+
+                <div class="pt-6 border-t" style="border-color: var(--card-border);">
+                    <p class="text-sm text-center" data-i18n="privacy_footer">Este sitio es un proyecto de demostración.
+                        No es una empresa real ni ofrece servicios comerciales.</p>
+                </div>
+            </div>
+
+            <div class="text-center mt-8">
+                <a href="index.html"
+                    class="inline-flex items-center gap-2 px-6 py-3 bg-[#E53935] text-white font-display text-sm uppercase tracking-wider rounded-lg hover:bg-[#B71C1C] transition-colors">
+                    <i class="fas fa-arrow-left"></i>
+                    <span data-i18n="privacy_back">Volver al Inicio</span>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="py-12 border-t" style="background: var(--bg-alt); border-color: var(--card-border);">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-col md:flex-row justify-between items-center gap-6">
+                <div class="flex items-center gap-3">
+                    <img src="https://res.cloudinary.com/dicrov8ka/image/upload/v1771890897/logotaller_rhzi7m.png"
+                        alt="Taller PuraVida" class="h-10 w-auto">
+                    <span class="font-display" style="color: var(--fg);">PuraVida</span>
+                </div>
+                <div class="flex gap-6 text-sm" style="color: var(--fg-muted);">
+                    <a href="index.html" class="hover:text-[#E53935] transition-colors">Inicio</a>
+                    <a href="servicio.html" class="hover:text-[#E53935] transition-colors">Servicios</a>
+                    <a href="locales.html" class="hover:text-[#E53935] transition-colors">Locales</a>
+                </div>
+                <p class="text-sm" style="color: var(--fg-muted);">© 2024 Taller PuraVida. Todos los derechos
+                    reservados.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Floating Buttons -->
+    <div class="fixed bottom-6 left-6 z-40 flex flex-col gap-3">
+        <a href="https://wa.me/00000000000" target="_blank"
+            class="floating-btn w-14 h-14 rounded-full bg-[#25D366] text-white flex items-center justify-center shadow-lg"
+            aria-label="WhatsApp">
+            <i class="fab fa-whatsapp text-2xl"></i>
+        </a>
+        <a href="tel:00000000000"
+            class="floating-btn w-14 h-14 rounded-full bg-[#E53935] text-white flex items-center justify-center shadow-lg"
+            aria-label="Llamar">
+            <i class="fas fa-phone text-xl"></i>
+        </a>
+    </div>
+
+
+
+    <!--Start of Tawk.to Script-->
+    <script type="text/javascript">
+        var Tawk_API = Tawk_API || {}, Tawk_LoadStart = new Date();
+        (function () {
+            var s1 = document.createElement("script"), s0 = document.getElementsByTagName("script")[0];
+            s1.async = true;
+            s1.src = 'https://embed.tawk.to/69633d7c987b03197cb20051/1jelqgcbd';
+            s1.charset = 'UTF-8';
+            s1.setAttribute('crossorigin', '*');
+            s0.parentNode.insertBefore(s1, s0);
+        })();
+    </script>
+    <!--End of Tawk.to Script-->
+
+    <!-- JavaScript -->
+    <script>
+        // Theme Toggle
+        const themeBtn = document.getElementById('theme-toggle');
+        const themeIcon = themeBtn ? themeBtn.querySelector('i') : null;
+        const savedTheme = localStorage.getItem('theme');
+        const systemPrefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+
+        let initialTheme = savedTheme || (systemPrefersDark ? 'dark' : 'light');
+        document.body.classList.toggle('dark', initialTheme === 'dark');
+
+        function updateThemeUI(isDark) {
+            localStorage.setItem('theme', isDark ? 'dark' : 'light');
+            if (themeIcon) {
+                themeIcon.classList.toggle('fa-sun', isDark);
+                themeIcon.classList.toggle('fa-moon', !isDark);
+            }
+        }
+        updateThemeUI(initialTheme === 'dark');
+
+        if (themeBtn) {
+            themeBtn.addEventListener('click', () => {
+                const isDark = !document.body.classList.contains('dark');
+                document.body.classList.toggle('dark', isDark);
+                updateThemeUI(isDark);
+            });
+        }
+
+        // Language Toggle
+        const translations = {
+            es: {
+                privacy_label: "Aviso Legal",
+                privacy_title: "Política de Privacidad",
+                privacy_notice_title: "Aviso Importante",
+                privacy_notice_text: "Esta página web NO es oficial y solo es una página web de ejemplo. Las imágenes y videos mostrados no buscan suplantar la identidad de nadie, ya sea vivo o muerto. Todo el contenido visual ha sido generado con inteligencia artificial con fines demostrativos.",
+                privacy_section1_title: "1. Información del Sitio",
+                privacy_section1_text: "Este sitio web ha sido creado únicamente con propósitos educativos y de demostración. No representa a ninguna empresa real ni ofrece servicios comerciales activos. Cualquier similitud con nombres, lugares o situaciones reales es pura coincidencia.",
+                privacy_section2_title: "2. Contenido Generado por IA",
+                privacy_section2_text: "Todas las imágenes, videos y textos presentes en este sitio web han sido generados mediante herramientas de inteligencia artificial. Estos elementos no representan personas, lugares o situaciones reales. El uso de este material es exclusivamente ilustrativo.",
+                privacy_section3_title: "3. Datos de Contacto",
+                privacy_section3_text: "Los números de teléfono, correos electrónicos y direcciones mostrados en este sitio son ficticios y han sido incluidos únicamente para mostrar la funcionalidad del sitio web. No intentes contactar a través de estos medios.",
+                privacy_section4_title: "4. Uso de Cookies",
+                privacy_section4_text: "Este sitio utiliza localStorage para guardar preferencias del usuario como el idioma seleccionado y el modo oscuro. No se recopila información personal ni se comparten datos con terceros.",
+                privacy_section5_title: "5. Derechos de Autor",
+                privacy_section5_text: "El diseño y código fuente de este sitio web son de uso libre para fines educativos. El contenido multimedia generado por IA no tiene derechos de autor comerciales.",
+                privacy_footer: "Este sitio es un proyecto de demostración. No es una empresa real ni ofrece servicios comerciales.",
+                privacy_back: "Volver al Inicio"
+            },
+            en: {
+                privacy_label: "Legal Notice",
+                privacy_title: "Privacy Policy",
+                privacy_notice_title: "Important Notice",
+                privacy_notice_text: "This website is NOT official and is only an example website. The images and videos shown do not seek to impersonate anyone, whether living or dead. All visual content has been generated with artificial intelligence for demonstrative purposes.",
+                privacy_section1_title: "1. Site Information",
+                privacy_section1_text: "This website has been created solely for educational and demonstration purposes. It does not represent any real company or offer active commercial services. Any similarity to real names, places or situations is purely coincidental.",
+                privacy_section2_title: "2. AI Generated Content",
+                privacy_section2_text: "All images, videos and texts on this website have been generated using artificial intelligence tools. These elements do not represent real people, places or situations. The use of this material is exclusively illustrative.",
+                privacy_section3_title: "3. Contact Data",
+                privacy_section3_text: "The phone numbers, emails and addresses shown on this site are fictitious and have been included solely to show the functionality of the website. Do not attempt to contact through these means.",
+                privacy_section4_title: "4. Use of Cookies",
+                privacy_section4_text: "This site uses localStorage to save user preferences such as selected language and dark mode. No personal information is collected or shared with third parties.",
+                privacy_section5_title: "5. Copyright",
+                privacy_section5_text: "The design and source code of this website are free for educational purposes. AI-generated multimedia content has no commercial copyright.",
+                privacy_footer: "This site is a demonstration project. It is not a real company and does not offer commercial services.",
+                privacy_back: "Back to Home"
+            },
+            pt: {
+                privacy_label: "Aviso Legal",
+                privacy_title: "Política de Privacidade",
+                privacy_notice_title: "Aviso Importante",
+                privacy_notice_text: "Este site NÃO é oficial e é apenas um site de exemplo. As imagens e vídeos exibidos não buscam suplantar a identidade de ninguém. Todo o conteúdo visual foi gerado com inteligência artificial para fins demonstrativos.",
+                privacy_section1_title: "1. Informações do Site",
+                privacy_section2_title: "2. Conteúdo Gerado por IA",
+                privacy_section3_title: "3. Dados de Contato",
+                privacy_section4_title: "4. Uso de Cookies",
+                privacy_section5_title: "5. Direitos Autorais",
+                privacy_footer: "Este site é um projeto de demonstração. Não é uma empresa real nem oferece serviços comerciais.",
+                privacy_back: "Voltar ao Início"
+            },
+            fr: {
+                privacy_label: "Avis Legal",
+                privacy_title: "Politique de Confidentialité",
+                privacy_notice_title: "Avis Important",
+                privacy_notice_text: "Ce site N'est PAS officiel et n'est qu'un site exemple. Les images et vidéos présentées ne cherchent pas à usurper l'identité de quiconque. Tout le contenu visuel a été généré par intelligence artificielle à des fins démonstratives.",
+                privacy_section1_title: "1. Informations sur le Site",
+                privacy_section2_title: "2. Contenu Généré par IA",
+                privacy_section3_title: "3. Données de Contact",
+                privacy_section4_title: "4. Utilisation des Cookies",
+                privacy_section5_title: "5. Droits d'Auteur",
+                privacy_footer: "Ce site est un projet de démonstration. Ce n'est pas une entreprise réelle et n'offre pas de services commerciaux.",
+                privacy_back: "Retour à l'Accueil"
+            },
+            zh: {
+                privacy_label: "法律声明",
+                privacy_title: "隐私政策",
+                privacy_notice_title: "重要通知",
+                privacy_notice_text: "本网站不是官方网站，仅为示例网站。所显示的图像和视频不旨在冒充任何人。所有视觉内容均由人工智能生成，用于演示目的。",
+                privacy_section1_title: "1. 网站信息",
+                privacy_section2_title: "2. AI生成内容",
+                privacy_section3_title: "3. 联系数据",
+                privacy_section4_title: "4. Cookie使用",
+                privacy_section5_title: "5. 版权",
+                privacy_footer: "本网站是一个演示项目。不是真实公司，不提供商业服务。",
+                privacy_back: "返回首页"
+            }
+        };
+
+        const langToggleBtn = document.getElementById('lang-toggle');
+        const langTextSpan = langToggleBtn ? langToggleBtn.querySelector('.lang-text') : null;
+        const availableLangs = Object.keys(translations);
+        let currentLang = localStorage.getItem('language') || 'es';
+
+        function getText(lang, key) {
+            if (translations[lang] && translations[lang][key]) return translations[lang][key];
+            if (translations['es'] && translations['es'][key]) return translations['es'][key];
+            return null;
+        }
+
+        function updateLanguage(lang) {
+            if (!translations[lang]) lang = 'es';
+            document.querySelectorAll('[data-i18n]').forEach(el => {
+                const key = el.getAttribute('data-i18n');
+                const value = getText(lang, key);
+                if (value) el.textContent = value;
+            });
+            if (langTextSpan) langTextSpan.textContent = lang.toUpperCase();
+            localStorage.setItem('language', lang);
+            currentLang = lang;
+        }
+
+        updateLanguage(currentLang);
+        if (langToggleBtn) {
+            langToggleBtn.addEventListener('click', () => {
+                const idx = availableLangs.indexOf(currentLang);
+                const nextLang = availableLangs[(idx + 1) % availableLangs.length];
+                updateLanguage(nextLang);
+            });
+        }
+
+        // Navbar Scroll
+        const navbar = document.getElementById('navbar');
+        window.addEventListener('scroll', () => {
+            if (window.pageYOffset > 100) {
+                navbar.style.background = 'var(--glass-bg)';
+                navbar.style.backdropFilter = 'blur(20px)';
+                navbar.style.boxShadow = '0 4px 30px rgba(0,0,0,0.1)';
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.style.background = 'transparent';
+                navbar.style.backdropFilter = 'none';
+                navbar.style.boxShadow = 'none';
+                navbar.classList.remove('scrolled');
+            }
+        });
+    </script>
+
+    <a href="https://nextwebcr.com" target="_blank" class="nextweb-badge">
+        <img src="logo.png" alt="NextWeb CR Logo">
+        <span>Desarrollado por <b>NextWeb CR</b></span>
+    </a>
+    <script src="js/security.js"></script>
+</body>
+
+</html>

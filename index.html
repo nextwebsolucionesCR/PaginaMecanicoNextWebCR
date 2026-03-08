@@ -1,0 +1,1596 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Taller PuraVida | Servicio Automotriz de Calidad</title>
+    <meta name="description"
+        content="Taller PuraVida - Más de 30 años de experiencia en mecánica automotriz. Servicio profesional, honesto y de calidad para tu vehículo.">
+    <meta name="keywords" content="taller mecánico, servicio automotriz, mecánica general, Costa Rica">
+    <link rel="canonical" href="https://tallerpuravida.com">
+
+    <meta property="og:title" content="Taller PuraVida | Servicio Automotriz de Calidad">
+    <meta property="og:description" content="Más de 30 años de experiencia en mecánica automotriz profesional.">
+    <meta property="og:image" content="https://res.cloudinary.com/dicrov8ka/image/upload/v1771884518/hero2_hqsmnf.jpg">
+    <meta property="og:url" content="https://tallerpuravida.com">
+    <meta property="og:type" content="website">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Barlow:wght@300;400;500;600;700&family=Oswald:wght@400;500;600;700&display=swap"
+        rel="stylesheet">
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    fontFamily: {
+                        'display': ['Oswald', 'sans-serif'],
+                        'body': ['Barlow', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        :root {
+            --bg: #FAFAFA;
+            --bg-alt: #F0F0F0;
+            --fg: #0A0A0A;
+            --fg-muted: #666666;
+            --accent: #E53935;
+            --accent-glow: rgba(229, 57, 53, 0.3);
+            --card: #FFFFFF;
+            --card-border: rgba(0, 0, 0, 0.08);
+            --glass-bg: rgba(255, 255, 255, 0.7);
+            --glass-border: rgba(255, 255, 255, 0.3);
+        }
+
+        .dark {
+            --bg: #0A0A0A;
+            --bg-alt: #121212;
+            --fg: #FAFAFA;
+            --fg-muted: #999999;
+            --accent: #FF1744;
+            --accent-glow: rgba(255, 23, 68, 0.4);
+            --card: #1A1A1A;
+            --card-border: rgba(255, 255, 255, 0.08);
+            --glass-bg: rgba(26, 26, 26, 0.8);
+            --glass-border: rgba(255, 255, 255, 0.1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Barlow', sans-serif;
+            background: var(--bg);
+            color: var(--fg);
+            overflow-x: hidden;
+            transition: background 0.4s ease, color 0.4s ease;
+        }
+
+        .font-display {
+            font-family: 'Oswald', sans-serif;
+            font-weight: 600;
+            letter-spacing: 0.05em;
+            text-transform: uppercase;
+        }
+
+        h1,
+        h2,
+        h3,
+        h4,
+        h5,
+        h6 {
+            font-family: 'Oswald', sans-serif;
+            font-weight: 600;
+            letter-spacing: 0.03em;
+            text-transform: uppercase;
+        }
+
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: var(--bg-alt);
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: var(--accent);
+            border-radius: 4px;
+        }
+
+        .hero-slide {
+            position: absolute;
+            inset: 0;
+            opacity: 0;
+            transition: opacity 1s ease-in-out;
+        }
+
+        .hero-slide.active {
+            opacity: 1;
+        }
+
+        .noise-overlay {
+            position: fixed;
+            inset: 0;
+            pointer-events: none;
+            z-index: 9999;
+            opacity: 0.03;
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+        }
+
+        .glass-card {
+            background: var(--glass-bg);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid var(--glass-border);
+        }
+
+        /* NextWeb CR Badge */
+        .nextweb-badge {
+            position: fixed;
+            bottom: 100px;
+            right: 20px;
+            z-index: 1000;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 8px 16px;
+            background: rgba(10, 10, 10, 0.9);
+            backdrop-filter: blur(8px);
+            border: 1px solid #FFB300;
+            border-radius: 12px;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+        }
+
+        .nextweb-badge:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(255, 179, 0, 0.2);
+            border-color: #FFD54F;
+        }
+
+        .nextweb-badge img {
+            height: 24px;
+            width: auto;
+        }
+
+        .nextweb-badge span {
+            color: #FFFFFF;
+            font-family: 'Barlow', sans-serif;
+            font-size: 14px;
+            white-space: nowrap;
+        }
+
+        .nextweb-badge b {
+            color: #FFFFFF;
+            font-weight: 700;
+        }
+
+        .service-card {
+            position: relative;
+            overflow: hidden;
+        }
+
+        .service-card::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(to top, rgba(0, 0, 0, 0.9) 0%, transparent 60%);
+            z-index: 1;
+        }
+
+        .service-card .service-content {
+            transform: translateY(60%);
+            transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .service-card:hover .service-content {
+            transform: translateY(0);
+        }
+
+        .service-card .service-actions {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.4s ease 0.1s;
+        }
+
+        .service-card:hover .service-actions {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        @keyframes scroll-reviews {
+            0% {
+                transform: translateX(0);
+            }
+
+            100% {
+                transform: translateX(-50%);
+            }
+        }
+
+        .reviews-track {
+            animation: scroll-reviews 40s linear infinite;
+        }
+
+        .reviews-track:hover {
+            animation-play-state: paused;
+        }
+
+        .floating-btn {
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .floating-btn:hover {
+            transform: scale(1.1) translateY(-3px);
+            box-shadow: 0 10px 30px var(--accent-glow);
+        }
+
+        .magnetic-btn {
+            position: relative;
+            overflow: hidden;
+        }
+
+        .magnetic-btn::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(135deg, transparent 0%, rgba(255, 255, 255, 0.2) 50%, transparent 100%);
+            transform: translateX(-100%);
+            transition: transform 0.6s ease;
+        }
+
+        .magnetic-btn:hover::before {
+            transform: translateX(100%);
+        }
+
+        .grid-pattern {
+            background-image: linear-gradient(var(--card-border) 1px, transparent 1px), linear-gradient(90deg, var(--card-border) 1px, transparent 1px);
+            background-size: 60px 60px;
+        }
+
+        .text-gradient {
+            background: linear-gradient(135deg, var(--accent) 0%, #FF6B6B 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .reveal {
+            opacity: 0;
+            transform: translateY(40px);
+            transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .reveal.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .stagger-children>* {
+            opacity: 0;
+            transform: translateY(30px);
+        }
+
+        .stagger-children.visible>*:nth-child(1) {
+            transition-delay: 0.1s;
+        }
+
+        .stagger-children.visible>*:nth-child(2) {
+            transition-delay: 0.2s;
+        }
+
+        .stagger-children.visible>*:nth-child(3) {
+            transition-delay: 0.3s;
+        }
+
+        .stagger-children.visible>*:nth-child(4) {
+            transition-delay: 0.4s;
+        }
+
+        .stagger-children.visible>*:nth-child(5) {
+            transition-delay: 0.5s;
+        }
+
+        .stagger-children.visible>* {
+            opacity: 1;
+            transform: translateY(0);
+            transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .form-input {
+            background: var(--card);
+            border: 1px solid var(--card-border);
+            color: var(--fg);
+            transition: all 0.3s ease;
+            font-family: 'Barlow', sans-serif;
+        }
+
+        .form-input:focus {
+            border-color: var(--accent);
+            box-shadow: 0 0 0 3px var(--accent-glow);
+            outline: none;
+        }
+
+        .timeline-item {
+            position: relative;
+            padding-left: 30px;
+        }
+
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 8px;
+            width: 12px;
+            height: 12px;
+            background: var(--accent);
+            border-radius: 50%;
+        }
+
+        .timeline-item::after {
+            content: '';
+            position: absolute;
+            left: 5px;
+            top: 24px;
+            width: 2px;
+            height: calc(100% - 8px);
+            background: var(--card-border);
+        }
+
+        .timeline-item:last-child::after {
+            display: none;
+        }
+
+        .mobile-menu {
+            transform: translateX(100%);
+            transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .mobile-menu.open {
+            transform: translateX(0);
+        }
+
+        .nav-link {
+            font-family: 'Oswald', sans-serif;
+            font-weight: 500;
+            letter-spacing: 0.1em;
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+
+            *,
+            *::before,
+            *::after {
+                animation-duration: 0.01ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: 0.01ms !important;
+            }
+
+            .reviews-track {
+                animation: none;
+            }
+        }
+
+        /* Navbar Visibility Fixes */
+        body.dark-hero #navbar:not(.scrolled) .font-display,
+        body.dark-hero #navbar:not(.scrolled) .nav-link:not(:hover),
+        body.dark-hero #navbar:not(.scrolled) i,
+        body.dark-hero #navbar:not(.scrolled) .lang-text {
+            color: #FFFFFF !important;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+        }
+
+        body.dark-hero #navbar:not(.scrolled) .glass-card {
+            background: rgba(0, 0, 0, 0.3) !important;
+            border-color: rgba(255, 255, 255, 0.1) !important;
+        }
+
+        #navbar .font-display,
+        #navbar .lang-text,
+        #navbar i {
+            color: var(--fg) !important;
+            transition: color 0.3s ease;
+        }
+
+        #navbar .nav-link {
+            color: var(--fg) !important;
+            font-weight: 600;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            display: inline-block;
+        }
+
+        #navbar .nav-link:hover {
+            color: var(--accent) !important;
+            text-shadow: 0 0 15px var(--accent-glow);
+            transform: translateY(-2px);
+        }
+    </style>
+</head>
+
+<body class="font-body dark-hero">
+    <div class="noise-overlay"></div>
+
+    <!-- Navigation -->
+    <nav id="navbar" class="fixed top-0 left-0 right-0 z-50 transition-all duration-500">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-20">
+                <a href="index.html" class="flex items-center gap-3">
+                    <img src="https://res.cloudinary.com/dicrov8ka/image/upload/v1771890897/logotaller_rhzi7m.png"
+                        alt="Taller PuraVida" class="h-12 w-auto">
+                    <span class="font-display text-xl hidden sm:block" style="color: var(--fg);">PuraVida</span>
+                </a>
+
+                <div class="hidden lg:flex items-center gap-8">
+                    <a href="#inicio"
+                        class="nav-link text-sm uppercase tracking-wider hover:text-[#E53935] transition-colors"
+                        style="color: var(--fg-muted);" data-i18n="nav_home">Inicio</a>
+                    <a href="#nosotros"
+                        class="nav-link text-sm uppercase tracking-wider hover:text-[#E53935] transition-colors"
+                        style="color: var(--fg-muted);" data-i18n="nav_about">Nosotros</a>
+                    <a href="#servicios"
+                        class="nav-link text-sm uppercase tracking-wider hover:text-[#E53935] transition-colors"
+                        style="color: var(--fg-muted);" data-i18n="nav_services">Servicios</a>
+                    <a href="locales.html"
+                        class="nav-link text-sm uppercase tracking-wider hover:text-[#E53935] transition-colors"
+                        style="color: var(--fg-muted);" data-i18n="nav_locations">Locales</a>
+                    <a href="#contacto"
+                        class="nav-link text-sm uppercase tracking-wider hover:text-[#E53935] transition-colors"
+                        style="color: var(--fg-muted);" data-i18n="nav_contact">Contacto</a>
+                </div>
+
+                <div class="flex items-center gap-3">
+                    <button id="lang-toggle"
+                        class="flex items-center gap-2 px-3 py-2 rounded-lg glass-card text-sm font-medium"
+                        style="color: var(--fg);" aria-label="Cambiar idioma">
+                        <i class="fas fa-globe"></i>
+                        <span class="lang-text">ES</span>
+                    </button>
+                    <button id="theme-toggle" class="w-10 h-10 rounded-lg glass-card flex items-center justify-center"
+                        aria-label="Cambiar tema" aria-pressed="false">
+                        <i class="fas fa-moon" style="color: var(--fg);"></i>
+                    </button>
+                    <button id="mobile-menu-btn"
+                        class="lg:hidden w-10 h-10 rounded-lg glass-card flex items-center justify-center"
+                        aria-label="Abrir menú">
+                        <i class="fas fa-bars" style="color: var(--fg);"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+        <div class="h-0.5 bg-gradient-to-r from-transparent via-[#E53935] to-transparent opacity-50"></div>
+    </nav>
+
+    <!-- Mobile Menu -->
+    <div id="mobile-menu" class="mobile-menu fixed inset-y-0 right-0 w-80 max-w-full z-50 shadow-2xl"
+        style="background: var(--bg);">
+        <div class="p-6">
+            <div class="flex justify-between items-center mb-10">
+                <span class="font-display text-xl" style="color: var(--fg);">Menú</span>
+                <button id="close-menu-btn" class="w-10 h-10 rounded-lg flex items-center justify-center"
+                    style="background: var(--card);">
+                    <i class="fas fa-times" style="color: var(--fg);"></i>
+                </button>
+            </div>
+            <nav class="space-y-4">
+                <a href="#inicio"
+                    class="block py-3 px-4 rounded-lg text-lg font-medium hover:bg-[#E53935] hover:text-white transition-all"
+                    style="color: var(--fg);">Inicio</a>
+                <a href="#nosotros"
+                    class="block py-3 px-4 rounded-lg text-lg font-medium hover:bg-[#E53935] hover:text-white transition-all"
+                    style="color: var(--fg);">Nosotros</a>
+                <a href="#servicios"
+                    class="block py-3 px-4 rounded-lg text-lg font-medium hover:bg-[#E53935] hover:text-white transition-all"
+                    style="color: var(--fg);">Servicios</a>
+                <a href="servicio.html"
+                    class="block py-3 px-4 rounded-lg text-lg font-medium hover:bg-[#E53935] hover:text-white transition-all"
+                    style="color: var(--fg);">Todos los Servicios</a>
+                <a href="locales.html"
+                    class="block py-3 px-4 rounded-lg text-lg font-medium hover:bg-[#E53935] hover:text-white transition-all"
+                    style="color: var(--fg);">Locales</a>
+                <a href="#contacto"
+                    class="block py-3 px-4 rounded-lg text-lg font-medium hover:bg-[#E53935] hover:text-white transition-all"
+                    style="color: var(--fg);">Contacto</a>
+            </nav>
+        </div>
+    </div>
+    <div id="menu-overlay" class="fixed inset-0 bg-black/50 z-40 opacity-0 pointer-events-none transition-opacity">
+    </div>
+
+    <!-- Hero Section -->
+    <section id="inicio" class="relative min-h-screen flex items-center overflow-hidden">
+        <div class="hero-slides absolute inset-0">
+            <!-- Slide 1 - Video -->
+            <div class="hero-slide active">
+                <div class="absolute inset-0">
+                    <video muted playsinline class="w-full h-full object-cover">
+                        <source src="https://res.cloudinary.com/dicrov8ka/video/upload/v1771892087/herovideo_lwfgw5.mp4"
+                            type="video/mp4">
+                    </video>
+                </div>
+                <div class="absolute inset-0 bg-gradient-to-r from-black/80 via-black/50 to-transparent z-[1]"></div>
+                <div class="absolute inset-0 flex items-center z-[2]">
+                    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
+                        <div class="max-w-2xl">
+                            <span
+                                class="inline-block px-4 py-1 text-sm font-medium border border-[#E53935] text-[#E53935] rounded-full mb-4"
+                                data-i18n="hero_badge1">Servicio Premium</span>
+                            <h1 class="font-display text-4xl sm:text-5xl md:text-7xl text-white mb-6 leading-tight"
+                                data-i18n="hero_title1">Servicio De Calidad Para Su Auto</h1>
+                            <p class="text-gray-300 text-lg mb-8" data-i18n="hero_desc1">Más de 30 años de experiencia
+                                respaldando su confianza</p>
+                            <a href="servicio.html"
+                                class="magnetic-btn inline-flex items-center gap-3 px-8 py-4 bg-[#E53935] text-white font-display text-sm uppercase tracking-wider rounded-lg hover:bg-[#B71C1C] transition-colors">
+                                <span data-i18n="hero_btn1">Ver Servicios</span>
+                                <i class="fas fa-arrow-right"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Slide 2 -->
+            <div class="hero-slide">
+                <div class="absolute inset-0">
+                    <img src="https://res.cloudinary.com/dicrov8ka/image/upload/v1771884518/hero2_hqsmnf.jpg"
+                        alt="Profesionales de calidad" class="w-full h-full object-cover">
+                </div>
+                <div class="absolute inset-0 bg-gradient-to-r from-black/80 via-black/50 to-transparent z-[1]"></div>
+                <div class="absolute inset-0 flex items-center z-[2]">
+                    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
+                        <div class="max-w-2xl">
+                            <span
+                                class="inline-block px-4 py-1 text-sm font-medium border border-[#E53935] text-[#E53935] rounded-full mb-4"
+                                data-i18n="hero_badge2">Equipo Certificado</span>
+                            <h1 class="font-display text-4xl sm:text-5xl md:text-7xl text-white mb-6 leading-tight"
+                                data-i18n="hero_title2">Profesionales De Calidad</h1>
+                            <p class="text-gray-300 text-lg mb-8" data-i18n="hero_desc2">Técnicos especializados con
+                                formación continua</p>
+                            <a href="#reservar"
+                                class="magnetic-btn inline-flex items-center gap-3 px-8 py-4 bg-[#E53935] text-white font-display text-sm uppercase tracking-wider rounded-lg hover:bg-[#B71C1C] transition-colors">
+                                <span data-i18n="hero_btn2">Agendar Revisión</span>
+                                <i class="fas fa-calendar-check"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Slide 3 -->
+            <div class="hero-slide">
+                <div class="absolute inset-0">
+                    <img src="https://res.cloudinary.com/dicrov8ka/image/upload/v1771884513/hero1_xxccbp.jpg"
+                        alt="Talleres en diferentes puntos" class="w-full h-full object-cover">
+                </div>
+                <div class="absolute inset-0 bg-gradient-to-r from-black/80 via-black/50 to-transparent z-[1]"></div>
+                <div class="absolute inset-0 flex items-center z-[2]">
+                    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
+                        <div class="max-w-2xl">
+                            <span
+                                class="inline-block px-4 py-1 text-sm font-medium border border-[#E53935] text-[#E53935] rounded-full mb-4"
+                                data-i18n="hero_badge3">4 Sedes</span>
+                            <h1 class="font-display text-4xl sm:text-5xl md:text-7xl text-white mb-6 leading-tight"
+                                data-i18n="hero_title3">Talleres En Diferentes Puntos Del País</h1>
+                            <p class="text-gray-300 text-lg mb-8" data-i18n="hero_desc3">Liberia, Tamarindo, Puntarenas
+                                y Cartago</p>
+                            <a href="locales.html"
+                                class="magnetic-btn inline-flex items-center gap-3 px-8 py-4 bg-[#E53935] text-white font-display text-sm uppercase tracking-wider rounded-lg hover:bg-[#B71C1C] transition-colors">
+                                <span data-i18n="hero_btn3">Ubicar Talleres</span>
+                                <i class="fas fa-map-marker-alt"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Hero Indicators -->
+        <div class="absolute bottom-8 left-1/2 -translate-x-1/2 z-20 flex gap-3">
+            <button class="hero-indicator w-12 h-1 rounded-full bg-white/30 transition-all active" data-slide="0"
+                aria-label="Slide 1">
+                <span
+                    class="block h-full rounded-full bg-[#E53935] origin-left scale-x-0 transition-transform duration-[6000ms]"></span>
+            </button>
+            <button class="hero-indicator w-12 h-1 rounded-full bg-white/30 transition-all" data-slide="1"
+                aria-label="Slide 2">
+                <span
+                    class="block h-full rounded-full bg-[#E53935] origin-left scale-x-0 transition-transform duration-[6000ms]"></span>
+            </button>
+            <button class="hero-indicator w-12 h-1 rounded-full bg-white/30 transition-all" data-slide="2"
+                aria-label="Slide 3">
+                <span
+                    class="block h-full rounded-full bg-[#E53935] origin-left scale-x-0 transition-transform duration-[6000ms]"></span>
+            </button>
+        </div>
+
+        <div class="absolute bottom-8 right-8 z-20 hidden md:block">
+            <div class="flex flex-col items-center gap-2 text-white/60">
+                <span class="text-xs uppercase tracking-widest rotate-90 origin-center translate-y-8">Scroll</span>
+                <div class="w-6 h-10 border-2 border-white/30 rounded-full flex justify-center pt-2">
+                    <div class="w-1 h-2 bg-white/60 rounded-full animate-bounce"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="nosotros" class="py-20 lg:py-32 relative overflow-hidden">
+        <div class="absolute inset-0 grid-pattern opacity-30"></div>
+
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
+            <div class="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center">
+                <div class="reveal">
+                    <div class="relative">
+                        <div class="aspect-[4/5] rounded-2xl overflow-hidden shadow-2xl">
+                            <img src="https://res.cloudinary.com/dicrov8ka/image/upload/v1771887348/acerca_mtifhb.jpg"
+                                alt="Taller PuraVida" class="w-full h-full object-cover">
+                        </div>
+                        <div class="absolute -bottom-6 -right-6 lg:-right-12 glass-card rounded-xl p-6 shadow-xl">
+                            <div class="text-center">
+                                <span class="font-display text-5xl text-[#E53935]">30+</span>
+                                <p class="text-sm mt-1" style="color: var(--fg-muted);" data-i18n="about_years">Años de
+                                    Experiencia</p>
+                            </div>
+                        </div>
+                        <div
+                            class="absolute -top-4 -left-4 w-24 h-24 border-l-4 border-t-4 border-[#E53935] rounded-tl-2xl">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="reveal">
+                    <span
+                        class="inline-block px-4 py-1 text-sm font-medium bg-[#E53935]/10 text-[#E53935] rounded-full mb-6"
+                        data-i18n="about_label">Sobre Nosotros</span>
+                    <h2 class="font-display text-3xl sm:text-4xl lg:text-5xl mb-6 leading-tight"
+                        style="color: var(--fg);" data-i18n="about_title">Taller PuraVida</h2>
+                    <div class="space-y-4 text-base leading-relaxed" style="color: var(--fg-muted);">
+                        <p data-i18n="about_text1">En Taller el PuraVida, fundado en 1990, contamos con más de tres
+                            décadas de experiencia brindando soluciones confiables en mecánica automotriz. A lo largo de
+                            los años hemos construido una reputación basada en la honestidad, la calidad del trabajo y
+                            la satisfacción de nuestros clientes.</p>
+                        <p data-i18n="about_text2">Sabemos que tu vehículo es una parte esencial de tu día a día, por
+                            eso trabajamos con responsabilidad, precisión y compromiso en cada servicio que realizamos.
+                        </p>
+                        <p data-i18n="about_text3">Nuestro equipo está conformado por técnicos capacitados y utilizamos
+                            herramientas modernas junto con repuestos de calidad para garantizar resultados seguros y
+                            duraderos.</p>
+                    </div>
+                    <div class="flex flex-wrap gap-6 mt-8">
+                        <div class="flex items-center gap-3">
+                            <div class="w-12 h-12 rounded-full bg-[#E53935]/10 flex items-center justify-center">
+                                <i class="fas fa-shield-alt text-[#E53935]"></i>
+                            </div>
+                            <div>
+                                <span class="font-display block" style="color: var(--fg);"
+                                    data-i18n="about_guarantee">Garantía</span>
+                                <span class="text-sm" style="color: var(--fg-muted);">En todos los servicios</span>
+                            </div>
+                        </div>
+                        <div class="flex items-center gap-3">
+                            <div class="w-12 h-12 rounded-full bg-[#E53935]/10 flex items-center justify-center">
+                                <i class="fas fa-tools text-[#E53935]"></i>
+                            </div>
+                            <div>
+                                <span class="font-display block" style="color: var(--fg);"
+                                    data-i18n="about_equipment">Equipamiento</span>
+                                <span class="text-sm" style="color: var(--fg-muted);">Tecnología de punta</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="servicios" class="py-20 lg:py-32 relative" style="background: var(--bg-alt);">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16 reveal">
+                <span
+                    class="inline-block px-4 py-1 text-sm font-medium bg-[#E53935]/10 text-[#E53935] rounded-full mb-6"
+                    data-i18n="services_label">Nuestros Servicios</span>
+                <h2 class="font-display text-3xl sm:text-4xl lg:text-5xl mb-4" style="color: var(--fg);"
+                    data-i18n="services_title">Servicios Principales</h2>
+                <p class="text-lg max-w-2xl mx-auto" style="color: var(--fg-muted);" data-i18n="services_subtitle">
+                    Soluciones completas para el cuidado de su vehículo</p>
+            </div>
+
+            <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 stagger-children" id="services-grid">
+                <div class="service-card rounded-2xl overflow-hidden shadow-xl cursor-pointer group">
+                    <img src="https://res.cloudinary.com/dicrov8ka/image/upload/v1771887516/cambiodefajas_jyhu0s.jpg"
+                        alt="Cambio de Fajas"
+                        class="w-full aspect-[4/3] object-cover transition-transform duration-500 group-hover:scale-110">
+                    <div class="absolute inset-0 z-10 flex flex-col justify-end p-6">
+                        <div class="service-content">
+                            <h3 class="font-display text-xl text-white mb-2">Cambio de Fajas</h3>
+                            <p class="text-gray-300 text-sm mb-4">Renovación de fajas de transmisión y accesorios</p>
+                            <div class="service-actions flex gap-3">
+                                <a href="servicio.html#cambio-fajas"
+                                    class="flex-1 px-4 py-2 bg-white text-black font-medium text-sm rounded-lg text-center hover:bg-gray-100 transition-colors">Ver
+                                    Más</a>
+                                <a href="https://wa.me/00000000000?text=Buenas%2C%20tengo%20interes%20sobre%20el%20servicio%20Cambio%20de%20Fajas%20podrian%20darme%20mas%20informacion%20y%20precio"
+                                    target="_blank"
+                                    class="px-4 py-2 bg-[#25D366] text-white font-medium text-sm rounded-lg flex items-center justify-center gap-2 hover:bg-[#128C7E] transition-colors">
+                                    <i class="fab fa-whatsapp"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="service-card rounded-2xl overflow-hidden shadow-xl cursor-pointer group">
+                    <img src="https://res.cloudinary.com/dicrov8ka/image/upload/v1771887550/revisioncompletadelsistema_om8c2y.jpg"
+                        alt="Revisión Completa"
+                        class="w-full aspect-[4/3] object-cover transition-transform duration-500 group-hover:scale-110">
+                    <div class="absolute inset-0 z-10 flex flex-col justify-end p-6">
+                        <div class="service-content">
+                            <h3 class="font-display text-xl text-white mb-2">Revisión Completa Del Sistema</h3>
+                            <p class="text-gray-300 text-sm mb-4">Diagnóstico integral de todos los sistemas</p>
+                            <div class="service-actions flex gap-3">
+                                <a href="servicio.html#revision-sistema"
+                                    class="flex-1 px-4 py-2 bg-white text-black font-medium text-sm rounded-lg text-center hover:bg-gray-100 transition-colors">Ver
+                                    Más</a>
+                                <a href="https://wa.me/00000000000?text=Buenas%2C%20tengo%20interes%20sobre%20el%20servicio%20Revision%20Completa%20Del%20Sistema%20podrian%20darme%20mas%20informacion%20y%20precio"
+                                    target="_blank"
+                                    class="px-4 py-2 bg-[#25D366] text-white font-medium text-sm rounded-lg flex items-center justify-center gap-2 hover:bg-[#128C7E] transition-colors">
+                                    <i class="fab fa-whatsapp"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="service-card rounded-2xl overflow-hidden shadow-xl cursor-pointer group">
+                    <img src="https://res.cloudinary.com/dicrov8ka/image/upload/v1771887611/bateria_gkbpqf.jpg"
+                        alt="Revisión de Batería"
+                        class="w-full aspect-[4/3] object-cover transition-transform duration-500 group-hover:scale-110">
+                    <div class="absolute inset-0 z-10 flex flex-col justify-end p-6">
+                        <div class="service-content">
+                            <h3 class="font-display text-xl text-white mb-2">Revisión de Batería</h3>
+                            <p class="text-gray-300 text-sm mb-4">Evaluación y cambio de batería</p>
+                            <div class="service-actions flex gap-3">
+                                <a href="servicio.html#bateria"
+                                    class="flex-1 px-4 py-2 bg-white text-black font-medium text-sm rounded-lg text-center hover:bg-gray-100 transition-colors">Ver
+                                    Más</a>
+                                <a href="https://wa.me/00000000000?text=Buenas%2C%20tengo%20interes%20sobre%20el%20servicio%20Revision%20de%20Bateria%20podrian%20darme%20mas%20informacion%20y%20precio"
+                                    target="_blank"
+                                    class="px-4 py-2 bg-[#25D366] text-white font-medium text-sm rounded-lg flex items-center justify-center gap-2 hover:bg-[#128C7E] transition-colors">
+                                    <i class="fab fa-whatsapp"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="service-card rounded-2xl overflow-hidden shadow-xl cursor-pointer group">
+                    <img src="https://res.cloudinary.com/dicrov8ka/image/upload/v1771887683/rotulas_w5db2m.jpg"
+                        alt="Revisión de Rótulas"
+                        class="w-full aspect-[4/3] object-cover transition-transform duration-500 group-hover:scale-110">
+                    <div class="absolute inset-0 z-10 flex flex-col justify-end p-6">
+                        <div class="service-content">
+                            <h3 class="font-display text-xl text-white mb-2">Revisión de Rótulas</h3>
+                            <p class="text-gray-300 text-sm mb-4">Inspección y reemplazo de rótulas</p>
+                            <div class="service-actions flex gap-3">
+                                <a href="servicio.html#rotulas"
+                                    class="flex-1 px-4 py-2 bg-white text-black font-medium text-sm rounded-lg text-center hover:bg-gray-100 transition-colors">Ver
+                                    Más</a>
+                                <a href="https://wa.me/00000000000?text=Buenas%2C%20tengo%20interes%20sobre%20el%20servicio%20Revision%20de%20Rotulas%20podrian%20darme%20mas%20informacion%20y%20precio"
+                                    target="_blank"
+                                    class="px-4 py-2 bg-[#25D366] text-white font-medium text-sm rounded-lg flex items-center justify-center gap-2 hover:bg-[#128C7E] transition-colors">
+                                    <i class="fab fa-whatsapp"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="service-card rounded-2xl overflow-hidden shadow-xl cursor-pointer group">
+                    <img src="https://res.cloudinary.com/dicrov8ka/image/upload/v1771887732/revisiondesensores_wzeb8x.jpg"
+                        alt="Revisión de Sensores"
+                        class="w-full aspect-[4/3] object-cover transition-transform duration-500 group-hover:scale-110">
+                    <div class="absolute inset-0 z-10 flex flex-col justify-end p-6">
+                        <div class="service-content">
+                            <h3 class="font-display text-xl text-white mb-2">Revisión De Sensores</h3>
+                            <p class="text-gray-300 text-sm mb-4">Diagnóstico de sensores electrónicos</p>
+                            <div class="service-actions flex gap-3">
+                                <a href="servicio.html#sensores"
+                                    class="flex-1 px-4 py-2 bg-white text-black font-medium text-sm rounded-lg text-center hover:bg-gray-100 transition-colors">Ver
+                                    Más</a>
+                                <a href="https://wa.me/00000000000?text=Buenas%2C%20tengo%20interes%20sobre%20el%20servicio%20Revision%20De%20Sensores%20podrian%20darme%20mas%20informacion%20y%20precio"
+                                    target="_blank"
+                                    class="px-4 py-2 bg-[#25D366] text-white font-medium text-sm rounded-lg flex items-center justify-center gap-2 hover:bg-[#128C7E] transition-colors">
+                                    <i class="fab fa-whatsapp"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="rounded-2xl overflow-hidden shadow-xl flex items-center justify-center p-8"
+                    style="background: linear-gradient(135deg, var(--card) 0%, var(--bg-alt) 100%); border: 2px dashed var(--accent);">
+                    <a href="servicio.html" class="text-center group">
+                        <div
+                            class="w-16 h-16 rounded-full bg-[#E53935]/10 flex items-center justify-center mx-auto mb-4 group-hover:bg-[#E53935] transition-colors">
+                            <i
+                                class="fas fa-th-large text-2xl text-[#E53935] group-hover:text-white transition-colors"></i>
+                        </div>
+                        <span class="font-display text-lg" style="color: var(--fg);">Ver Todos Los Servicios</span>
+                        <p class="text-sm mt-2" style="color: var(--fg-muted);">Catálogo completo</p>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Schedule Section -->
+    <section id="reservar" class="py-20 lg:py-32 relative overflow-hidden">
+        <div class="absolute top-0 right-0 w-1/2 h-full bg-gradient-to-l from-[#E53935]/5 to-transparent"></div>
+
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
+            <div class="grid lg:grid-cols-2 gap-12 items-center">
+                <div class="reveal">
+                    <span
+                        class="inline-block px-4 py-1 text-sm font-medium bg-[#E53935]/10 text-[#E53935] rounded-full mb-6">Reservaciones</span>
+                    <h2 class="font-display text-3xl sm:text-4xl lg:text-5xl mb-6" style="color: var(--fg);">Agenda una
+                        revisión general para tu vehículo</h2>
+
+                    <div class="space-y-6 mt-8">
+                        <div class="timeline-item pb-6">
+                            <h4 class="font-display text-lg" style="color: var(--fg);">1. Revisamos tu vehículo</h4>
+                            <p class="text-sm mt-1" style="color: var(--fg-muted);">Inspección visual y mecánica
+                                completa</p>
+                        </div>
+                        <div class="timeline-item pb-6">
+                            <h4 class="font-display text-lg" style="color: var(--fg);">2. Diagnóstico claro</h4>
+                            <p class="text-sm mt-1" style="color: var(--fg-muted);">Te explicamos los problemas
+                                encontrados</p>
+                        </div>
+                        <div class="timeline-item pb-6">
+                            <h4 class="font-display text-lg" style="color: var(--fg);">3. Aprobación del cliente</h4>
+                            <p class="text-sm mt-1" style="color: var(--fg-muted);">Sin sorpresas, tú autorizas todo</p>
+                        </div>
+                        <div class="timeline-item">
+                            <h4 class="font-display text-lg" style="color: var(--fg);">4. Reparación con garantía</h4>
+                            <p class="text-sm mt-1" style="color: var(--fg-muted);">Trabajo garantizado por escrito</p>
+                        </div>
+                    </div>
+
+                    <a href="https://calendar.app.google/DCTFGPunJV3G4hUd8" target="_blank"
+                        class="magnetic-btn inline-flex items-center gap-3 px-8 py-4 bg-[#E53935] text-white font-display text-sm uppercase tracking-wider rounded-lg hover:bg-[#B71C1C] transition-colors mt-8">
+                        <i class="fas fa-calendar-alt"></i>
+                        <span>Agendar Revisión</span>
+                    </a>
+                </div>
+
+                <div class="reveal">
+                    <div class="relative">
+                        <div class="aspect-square rounded-2xl overflow-hidden shadow-2xl"
+                            style="background: var(--card);">
+                            <div class="absolute inset-0 flex flex-col items-center justify-center p-8 text-center">
+                                <div
+                                    class="w-24 h-24 rounded-full bg-[#E53935]/10 flex items-center justify-center mb-6">
+                                    <i class="fas fa-car text-4xl text-[#E53935]"></i>
+                                </div>
+                                <h3 class="font-display text-2xl mb-4" style="color: var(--fg);">Tu Auto En Buenas Manos
+                                </h3>
+                                <p class="text-sm mb-6" style="color: var(--fg-muted);">Agenda tu cita y recibe atención
+                                    personalizada de nuestros expertos</p>
+                                <div class="flex items-center gap-4 text-sm" style="color: var(--fg-muted);">
+                                    <div class="flex items-center gap-2">
+                                        <i class="fas fa-clock text-[#E53935]"></i>
+                                        <span>45 min aprox</span>
+                                    </div>
+                                    <div class="flex items-center gap-2">
+                                        <i class="fas fa-check-circle text-[#E53935]"></i>
+                                        <span>Sin costo</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="absolute -bottom-4 -right-4 w-32 h-32 border-2 border-[#E53935] rounded-2xl -z-10">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Reviews Section -->
+    <section id="resenas" class="py-20 lg:py-32 relative overflow-hidden" style="background: var(--bg-alt);">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16 reveal">
+                <span
+                    class="inline-block px-4 py-1 text-sm font-medium bg-[#E53935]/10 text-[#E53935] rounded-full mb-6">Testimonios</span>
+                <h2 class="font-display text-3xl sm:text-4xl lg:text-5xl mb-4" style="color: var(--fg);">Reseñas De
+                    Nuestros Clientes</h2>
+            </div>
+
+            <div class="grid md:grid-cols-2 gap-8 mb-16 reveal">
+                <div class="rounded-2xl overflow-hidden shadow-xl aspect-video">
+                    <iframe src="https://player.vimeo.com/video/1167509667?h=961c7e3ab3" class="w-full h-full"
+                        frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen loading="lazy"
+                        title="Testimonio 1"></iframe>
+                </div>
+                <div class="rounded-2xl overflow-hidden shadow-xl aspect-video">
+                    <iframe src="https://player.vimeo.com/video/1167511014?h=0f91f02650" class="w-full h-full"
+                        frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen loading="lazy"
+                        title="Testimonio 2"></iframe>
+                </div>
+            </div>
+
+            <div class="relative overflow-hidden py-4">
+                <div class="reviews-track flex gap-6 w-fit">
+                    <div class="glass-card rounded-xl p-6 w-80 flex-shrink-0">
+                        <div class="flex items-center gap-3 mb-4">
+                            <div
+                                class="w-12 h-12 rounded-full bg-gradient-to-br from-[#E53935] to-[#FF6B6B] flex items-center justify-center text-white font-bold">
+                                MR</div>
+                            <div>
+                                <h4 class="font-display" style="color: var(--fg);">Marco Rodríguez</h4>
+                                <div class="flex gap-1">
+                                    <i class="fas fa-star text-yellow-400 text-sm"></i>
+                                    <i class="fas fa-star text-yellow-400 text-sm"></i>
+                                    <i class="fas fa-star text-yellow-400 text-sm"></i>
+                                    <i class="fas fa-star text-yellow-400 text-sm"></i>
+                                    <i class="fas fa-star text-yellow-400 text-sm"></i>
+                                </div>
+                            </div>
+                        </div>
+                        <p class="text-sm" style="color: var(--fg-muted);">Excelente servicio, muy profesionales. Mi
+                            auto quedó como nuevo después de la reparación del motor. Totalmente recomendados.</p>
+                    </div>
+
+                    <div class="glass-card rounded-xl p-6 w-80 flex-shrink-0">
+                        <div class="flex items-center gap-3 mb-4">
+                            <div
+                                class="w-12 h-12 rounded-full bg-gradient-to-br from-[#E53935] to-[#FF6B6B] flex items-center justify-center text-white font-bold">
+                                LS</div>
+                            <div>
+                                <h4 class="font-display" style="color: var(--fg);">Laura Sánchez</h4>
+                                <div class="flex gap-1">
+                                    <i class="fas fa-star text-yellow-400 text-sm"></i>
+                                    <i class="fas fa-star text-yellow-400 text-sm"></i>
+                                    <i class="fas fa-star text-yellow-400 text-sm"></i>
+                                    <i class="fas fa-star text-yellow-400 text-sm"></i>
+                                    <i class="fas fa-star text-yellow-400 text-sm"></i>
+                                </div>
+                            </div>
+                        </div>
+                        <p class="text-sm" style="color: var(--fg-muted);">Llevo años trayendo mi vehículo aquí. La
+                            honestidad y calidad del trabajo es insuperable. No lo cambio por nada.</p>
+                    </div>
+
+                    <div class="glass-card rounded-xl p-6 w-80 flex-shrink-0">
+                        <div class="flex items-center gap-3 mb-4">
+                            <div
+                                class="w-12 h-12 rounded-full bg-gradient-to-br from-[#E53935] to-[#FF6B6B] flex items-center justify-center text-white font-bold">
+                                CG</div>
+                            <div>
+                                <h4 class="font-display" style="color: var(--fg);">Carlos Gómez</h4>
+                                <div class="flex gap-1">
+                                    <i class="fas fa-star text-yellow-400 text-sm"></i>
+                                    <i class="fas fa-star text-yellow-400 text-sm"></i>
+                                    <i class="fas fa-star text-yellow-400 text-sm"></i>
+                                    <i class="fas fa-star text-yellow-400 text-sm"></i>
+                                    <i class="fas fa-star-half-alt text-yellow-400 text-sm"></i>
+                                </div>
+                            </div>
+                        </div>
+                        <p class="text-sm" style="color: var(--fg-muted);">Rápidos, eficientes y a buen precio. El
+                            diagnóstico electrónico fue preciso y me ahorraron mucho dinero.</p>
+                    </div>
+
+                    <div class="glass-card rounded-xl p-6 w-80 flex-shrink-0">
+                        <div class="flex items-center gap-3 mb-4">
+                            <div
+                                class="w-12 h-12 rounded-full bg-gradient-to-br from-[#E53935] to-[#FF6B6B] flex items-center justify-center text-white font-bold">
+                                AP</div>
+                            <div>
+                                <h4 class="font-display" style="color: var(--fg);">Ana Pérez</h4>
+                                <div class="flex gap-1">
+                                    <i class="fas fa-star text-yellow-400 text-sm"></i>
+                                    <i class="fas fa-star text-yellow-400 text-sm"></i>
+                                    <i class="fas fa-star text-yellow-400 text-sm"></i>
+                                    <i class="fas fa-star text-yellow-400 text-sm"></i>
+                                    <i class="fas fa-star text-yellow-400 text-sm"></i>
+                                </div>
+                            </div>
+                        </div>
+                        <p class="text-sm" style="color: var(--fg-muted);">El aire acondicionado de mi auto quedó
+                            perfecto. Muy amables y me explicaron todo el proceso. Volveré segura.</p>
+                    </div>
+
+                    <div class="glass-card rounded-xl p-6 w-80 flex-shrink-0">
+                        <div class="flex items-center gap-3 mb-4">
+                            <div
+                                class="w-12 h-12 rounded-full bg-gradient-to-br from-[#E53935] to-[#FF6B6B] flex items-center justify-center text-white font-bold">
+                                JM</div>
+                            <div>
+                                <h4 class="font-display" style="color: var(--fg);">José Martínez</h4>
+                                <div class="flex gap-1">
+                                    <i class="fas fa-star text-yellow-400 text-sm"></i>
+                                    <i class="fas fa-star text-yellow-400 text-sm"></i>
+                                    <i class="fas fa-star text-yellow-400 text-sm"></i>
+                                    <i class="fas fa-star text-yellow-400 text-sm"></i>
+                                    <i class="fas fa-star text-yellow-400 text-sm"></i>
+                                </div>
+                            </div>
+                        </div>
+                        <p class="text-sm" style="color: var(--fg-muted);">Servicio de frenos excelente. Me sentí seguro
+                            manejando después de la reparación. Precios justos y transparentes.</p>
+                    </div>
+
+                    <!-- Duplicates -->
+                    <div class="glass-card rounded-xl p-6 w-80 flex-shrink-0">
+                        <div class="flex items-center gap-3 mb-4">
+                            <div
+                                class="w-12 h-12 rounded-full bg-gradient-to-br from-[#E53935] to-[#FF6B6B] flex items-center justify-center text-white font-bold">
+                                MR</div>
+                            <div>
+                                <h4 class="font-display" style="color: var(--fg);">Marco Rodríguez</h4>
+                                <div class="flex gap-1">
+                                    <i class="fas fa-star text-yellow-400 text-sm"></i>
+                                    <i class="fas fa-star text-yellow-400 text-sm"></i>
+                                    <i class="fas fa-star text-yellow-400 text-sm"></i>
+                                    <i class="fas fa-star text-yellow-400 text-sm"></i>
+                                    <i class="fas fa-star text-yellow-400 text-sm"></i>
+                                </div>
+                            </div>
+                        </div>
+                        <p class="text-sm" style="color: var(--fg-muted);">Excelente servicio, muy profesionales. Mi
+                            auto quedó como nuevo.</p>
+                    </div>
+
+                    <div class="glass-card rounded-xl p-6 w-80 flex-shrink-0">
+                        <div class="flex items-center gap-3 mb-4">
+                            <div
+                                class="w-12 h-12 rounded-full bg-gradient-to-br from-[#E53935] to-[#FF6B6B] flex items-center justify-center text-white font-bold">
+                                LS</div>
+                            <div>
+                                <h4 class="font-display" style="color: var(--fg);">Laura Sánchez</h4>
+                                <div class="flex gap-1">
+                                    <i class="fas fa-star text-yellow-400 text-sm"></i>
+                                    <i class="fas fa-star text-yellow-400 text-sm"></i>
+                                    <i class="fas fa-star text-yellow-400 text-sm"></i>
+                                    <i class="fas fa-star text-yellow-400 text-sm"></i>
+                                    <i class="fas fa-star text-yellow-400 text-sm"></i>
+                                </div>
+                            </div>
+                        </div>
+                        <p class="text-sm" style="color: var(--fg-muted);">Llevo años trayendo mi vehículo aquí. La
+                            honestidad y calidad es insuperable.</p>
+                    </div>
+
+                    <div class="glass-card rounded-xl p-6 w-80 flex-shrink-0">
+                        <div class="flex items-center gap-3 mb-4">
+                            <div
+                                class="w-12 h-12 rounded-full bg-gradient-to-br from-[#E53935] to-[#FF6B6B] flex items-center justify-center text-white font-bold">
+                                CG</div>
+                            <div>
+                                <h4 class="font-display" style="color: var(--fg);">Carlos Gómez</h4>
+                                <div class="flex gap-1">
+                                    <i class="fas fa-star text-yellow-400 text-sm"></i>
+                                    <i class="fas fa-star text-yellow-400 text-sm"></i>
+                                    <i class="fas fa-star text-yellow-400 text-sm"></i>
+                                    <i class="fas fa-star text-yellow-400 text-sm"></i>
+                                    <i class="fas fa-star-half-alt text-yellow-400 text-sm"></i>
+                                </div>
+                            </div>
+                        </div>
+                        <p class="text-sm" style="color: var(--fg-muted);">Rápidos, eficientes y a buen precio.</p>
+                    </div>
+
+                    <div class="glass-card rounded-xl p-6 w-80 flex-shrink-0">
+                        <div class="flex items-center gap-3 mb-4">
+                            <div
+                                class="w-12 h-12 rounded-full bg-gradient-to-br from-[#E53935] to-[#FF6B6B] flex items-center justify-center text-white font-bold">
+                                AP</div>
+                            <div>
+                                <h4 class="font-display" style="color: var(--fg);">Ana Pérez</h4>
+                                <div class="flex gap-1">
+                                    <i class="fas fa-star text-yellow-400 text-sm"></i>
+                                    <i class="fas fa-star text-yellow-400 text-sm"></i>
+                                    <i class="fas fa-star text-yellow-400 text-sm"></i>
+                                    <i class="fas fa-star text-yellow-400 text-sm"></i>
+                                    <i class="fas fa-star text-yellow-400 text-sm"></i>
+                                </div>
+                            </div>
+                        </div>
+                        <p class="text-sm" style="color: var(--fg-muted);">El aire acondicionado quedó perfecto. Muy
+                            amables.</p>
+                    </div>
+
+                    <div class="glass-card rounded-xl p-6 w-80 flex-shrink-0">
+                        <div class="flex items-center gap-3 mb-4">
+                            <div
+                                class="w-12 h-12 rounded-full bg-gradient-to-br from-[#E53935] to-[#FF6B6B] flex items-center justify-center text-white font-bold">
+                                JM</div>
+                            <div>
+                                <h4 class="font-display" style="color: var(--fg);">José Martínez</h4>
+                                <div class="flex gap-1">
+                                    <i class="fas fa-star text-yellow-400 text-sm"></i>
+                                    <i class="fas fa-star text-yellow-400 text-sm"></i>
+                                    <i class="fas fa-star text-yellow-400 text-sm"></i>
+                                    <i class="fas fa-star text-yellow-400 text-sm"></i>
+                                    <i class="fas fa-star text-yellow-400 text-sm"></i>
+                                </div>
+                            </div>
+                        </div>
+                        <p class="text-sm" style="color: var(--fg-muted);">Servicio de frenos excelente. Precios justos.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contacto" class="py-20 lg:py-32 relative overflow-hidden">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16 reveal">
+                <span
+                    class="inline-block px-4 py-1 text-sm font-medium bg-[#E53935]/10 text-[#E53935] rounded-full mb-6">Contacto</span>
+                <h2 class="font-display text-3xl sm:text-4xl lg:text-5xl mb-4" style="color: var(--fg);">Estamos Para
+                    Servirte</h2>
+            </div>
+
+            <div class="grid lg:grid-cols-3 gap-8">
+                <div class="lg:col-span-1 space-y-6 reveal">
+                    <div class="glass-card rounded-xl p-6">
+                        <div class="flex items-center gap-4">
+                            <div class="w-14 h-14 rounded-xl bg-[#E53935]/10 flex items-center justify-center">
+                                <i class="fas fa-phone text-xl text-[#E53935]"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-display" style="color: var(--fg);">Teléfono</h4>
+                                <a href="tel:00000000000" class="text-lg hover:text-[#E53935] transition-colors"
+                                    style="color: var(--fg-muted);">00000000000</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="glass-card rounded-xl p-6">
+                        <div class="flex items-center gap-4">
+                            <div class="w-14 h-14 rounded-xl bg-[#E53935]/10 flex items-center justify-center">
+                                <i class="fas fa-envelope text-xl text-[#E53935]"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-display" style="color: var(--fg);">Correo</h4>
+                                <a href="mailto:puravidacr@example.com"
+                                    class="text-lg hover:text-[#E53935] transition-colors"
+                                    style="color: var(--fg-muted);">puravidacr@example.com</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="glass-card rounded-xl p-6">
+                        <div class="flex items-center gap-4 mb-4">
+                            <div class="w-14 h-14 rounded-xl bg-[#E53935]/10 flex items-center justify-center">
+                                <i class="fas fa-clock text-xl text-[#E53935]"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-display" style="color: var(--fg);">Horario</h4>
+                            </div>
+                        </div>
+                        <div class="space-y-2 ml-2" style="color: var(--fg-muted);">
+                            <p><span class="font-medium">LUN-VIE:</span> 7:00 am / 10:00 pm</p>
+                            <p><span class="font-medium">Domingo:</span> Cerrado</p>
+                        </div>
+                    </div>
+
+                    <div class="glass-card rounded-xl p-6 text-center">
+                        <h4 class="font-display mb-4" style="color: var(--fg);">Hora Actual</h4>
+                        <script src="https://cdn.logwork.com/widget/digital.js"></script>
+                        <a href="https://logwork.com/current-time-in-liberia-costa-rica-guanacaste"
+                            class="digital-clock" data-style="flip" data-size="200" data-timezone="America/Costa_Rica"
+                            data-language="en">Current time in Liberia, Costa Rica</a>
+                    </div>
+                </div>
+
+                <div class="lg:col-span-2 reveal">
+                    <form id="contact-form" class="glass-card rounded-2xl p-8">
+                        <div class="grid sm:grid-cols-2 gap-6 mb-6">
+                            <div>
+                                <label for="name" class="block text-sm font-medium mb-2"
+                                    style="color: var(--fg);">Nombre</label>
+                                <input type="text" id="name" name="name" class="form-input w-full px-4 py-3 rounded-lg"
+                                    placeholder="Tu nombre" required>
+                            </div>
+                            <div>
+                                <label for="email" class="block text-sm font-medium mb-2"
+                                    style="color: var(--fg);">Correo</label>
+                                <input type="email" id="email" name="email"
+                                    class="form-input w-full px-4 py-3 rounded-lg" placeholder="tu@email.com" required>
+                            </div>
+                        </div>
+                        <div class="grid sm:grid-cols-2 gap-6 mb-6">
+                            <div>
+                                <label for="phone" class="block text-sm font-medium mb-2"
+                                    style="color: var(--fg);">Teléfono</label>
+                                <input type="tel" id="phone" name="phone" class="form-input w-full px-4 py-3 rounded-lg"
+                                    placeholder="0000-0000">
+                            </div>
+                            <div>
+                                <label for="service" class="block text-sm font-medium mb-2"
+                                    style="color: var(--fg);">Servicio</label>
+                                <select id="service" name="service"
+                                    class="form-input w-full px-4 py-3 rounded-lg cursor-pointer" required>
+                                    <option value="">Selecciona un servicio</option>
+                                    <option value="mecanica">Mecánica General</option>
+                                    <option value="frenos">Frenos</option>
+                                    <option value="diagnostico">Diagnóstico Electrónico</option>
+                                    <option value="motor">Motor y Transmisión</option>
+                                    <option value="electrico">Sistema Eléctrico</option>
+                                    <option value="suspension">Suspensión y Dirección</option>
+                                    <option value="aire">Aire Acondicionado</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="mb-6">
+                            <label for="message" class="block text-sm font-medium mb-2"
+                                style="color: var(--fg);">Consulta</label>
+                            <textarea id="message" name="message" rows="4"
+                                class="form-input w-full px-4 py-3 rounded-lg resize-none"
+                                placeholder="Cuéntanos sobre tu vehículo..." required></textarea>
+                        </div>
+                        <button type="submit"
+                            class="magnetic-btn w-full sm:w-auto px-8 py-4 bg-[#E53935] text-white font-display text-sm uppercase tracking-wider rounded-lg hover:bg-[#B71C1C] transition-colors flex items-center justify-center gap-3">
+                            <span>Enviar Mensaje</span>
+                            <i class="fas fa-paper-plane"></i>
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="py-12 border-t" style="background: var(--bg-alt); border-color: var(--card-border);">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid md:grid-cols-4 gap-8 mb-8">
+                <div class="md:col-span-2">
+                    <img src="https://res.cloudinary.com/dicrov8ka/image/upload/v1771890897/logotaller_rhzi7m.png"
+                        alt="Taller PuraVida" class="h-12 mb-4">
+                    <p class="text-sm mb-4" style="color: var(--fg-muted);">Más de 30 años brindando servicio automotriz
+                        de calidad en Costa Rica. Honestidad, profesionalismo y garantía en cada trabajo.</p>
+                    <div class="flex gap-4">
+                        <a href="#" class="w-10 h-10 rounded-lg flex items-center justify-center transition-colors"
+                            style="background: var(--card); color: var(--fg);" aria-label="Facebook">
+                            <i class="fab fa-facebook-f"></i>
+                        </a>
+                        <a href="#" class="w-10 h-10 rounded-lg flex items-center justify-center transition-colors"
+                            style="background: var(--card); color: var(--fg);" aria-label="Instagram">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                        <a href="https://wa.me/00000000000"
+                            class="w-10 h-10 rounded-lg flex items-center justify-center bg-[#25D366] text-white transition-colors hover:bg-[#128C7E]"
+                            aria-label="WhatsApp">
+                            <i class="fab fa-whatsapp"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <div>
+                    <h4 class="font-display mb-4" style="color: var(--fg);">Enlaces</h4>
+                    <ul class="space-y-2">
+                        <li><a href="#inicio" class="text-sm hover:text-[#E53935] transition-colors"
+                                style="color: var(--fg-muted);">Inicio</a></li>
+                        <li><a href="#nosotros" class="text-sm hover:text-[#E53935] transition-colors"
+                                style="color: var(--fg-muted);">Nosotros</a></li>
+                        <li><a href="servicio.html" class="text-sm hover:text-[#E53935] transition-colors"
+                                style="color: var(--fg-muted);">Servicios</a></li>
+                        <li><a href="locales.html" class="text-sm hover:text-[#E53935] transition-colors"
+                                style="color: var(--fg-muted);">Locales</a></li>
+                        <li><a href="privacidad.html" class="text-sm hover:text-[#E53935] transition-colors"
+                                style="color: var(--fg-muted);">Privacidad</a></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h4 class="font-display mb-4" style="color: var(--fg);">Locales</h4>
+                    <ul class="space-y-2 text-sm" style="color: var(--fg-muted);">
+                        <li>Liberia</li>
+                        <li>Tamarindo</li>
+                        <li>Puntarenas</li>
+                        <li>Cartago</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="pt-8 border-t text-center text-sm"
+                style="border-color: var(--card-border); color: var(--fg-muted);">
+                <p>© 2024 Taller PuraVida. Todos los derechos reservados.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Floating Buttons -->
+    <div class="fixed bottom-6 left-6 z-40 flex flex-col gap-3">
+        <a href="https://wa.me/00000000000" target="_blank"
+            class="floating-btn w-14 h-14 rounded-full bg-[#25D366] text-white flex items-center justify-center shadow-lg"
+            aria-label="WhatsApp">
+            <i class="fab fa-whatsapp text-2xl"></i>
+        </a>
+        <a href="tel:00000000000"
+            class="floating-btn w-14 h-14 rounded-full bg-[#E53935] text-white flex items-center justify-center shadow-lg"
+            aria-label="Llamar">
+            <i class="fas fa-phone text-xl"></i>
+        </a>
+    </div>
+
+    <!-- Tawk.to Script -->
+    <script type="text/javascript">
+        var Tawk_API = Tawk_API || {}, Tawk_LoadStart = new Date();
+        (function () {
+            var s1 = document.createElement("script"), s0 = document.getElementsByTagName("script")[0];
+            s1.async = true;
+            s1.src = 'https://embed.tawk.to/69633d7c987b03197cb20051/1jelqgcbd';
+            s1.charset = 'UTF-8';
+            s1.setAttribute('crossorigin', '*');
+            s0.parentNode.insertBefore(s1, s0);
+        })();
+    </script>
+
+    <!-- JavaScript -->
+    <script>
+        // Theme Toggle
+        const themeBtn = document.getElementById('theme-toggle');
+        const themeIcon = themeBtn ? themeBtn.querySelector('i') : null;
+        const savedTheme = localStorage.getItem('theme');
+        const systemPrefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+
+        let initialTheme = savedTheme || (systemPrefersDark ? 'dark' : 'light');
+        document.body.classList.toggle('dark', initialTheme === 'dark');
+
+        function updateThemeUI(isDark) {
+            localStorage.setItem('theme', isDark ? 'dark' : 'light');
+            if (themeIcon) {
+                themeIcon.classList.toggle('fa-sun', isDark);
+                themeIcon.classList.toggle('fa-moon', !isDark);
+            }
+        }
+        updateThemeUI(initialTheme === 'dark');
+
+        if (themeBtn) {
+            themeBtn.addEventListener('click', () => {
+                const isDark = !document.body.classList.contains('dark');
+                document.body.classList.toggle('dark', isDark);
+                updateThemeUI(isDark);
+            });
+        }
+
+        // Language Toggle
+        const translations = {
+            es: { nav_home: "Inicio", nav_about: "Nosotros", nav_services: "Servicios", nav_locations: "Locales", nav_contact: "Contacto", hero_badge1: "Servicio Premium", hero_title1: "Servicio De Calidad Para Su Auto", hero_desc1: "Más de 30 años de experiencia respaldando su confianza", hero_btn1: "Ver Servicios", hero_badge2: "Equipo Certificado", hero_title2: "Profesionales De Calidad", hero_desc2: "Técnicos especializados con formación continua", hero_btn2: "Agendar Revisión", hero_badge3: "4 Sedes", hero_title3: "Talleres En Diferentes Puntos Del País", hero_desc3: "Liberia, Tamarindo, Puntarenas y Cartago", hero_btn3: "Ubicar Talleres", about_label: "Sobre Nosotros", about_title: "Taller PuraVida", about_years: "Años de Experiencia", about_text1: "En Taller el PuraVida, fundado en 1990, contamos con más de tres décadas de experiencia brindando soluciones confiables en mecánica automotriz.", about_text2: "Sabemos que tu vehículo es una parte esencial de tu día a día, por eso trabajamos con responsabilidad, precisión y compromiso.", about_text3: "Nuestro equipo está conformado por técnicos capacitados y utilizamos herramientas modernas junto con repuestos de calidad.", about_guarantee: "Garantía", about_equipment: "Equipamiento", services_label: "Nuestros Servicios", services_title: "Servicios Principales", services_subtitle: "Soluciones completas para el cuidado de su vehículo" },
+            en: { nav_home: "Home", nav_about: "About Us", nav_services: "Services", nav_locations: "Locations", nav_contact: "Contact", hero_badge1: "Premium Service", hero_title1: "Quality Service For Your Car", hero_desc1: "Over 30 years of experience backing your trust", hero_btn1: "View Services", hero_badge2: "Certified Team", hero_title2: "Quality Professionals", hero_desc2: "Specialized technicians with continuous training", hero_btn2: "Schedule Inspection", hero_badge3: "4 Locations", hero_title3: "Workshops In Different Points Of The Country", hero_desc3: "Liberia, Tamarindo, Puntarenas and Cartago", hero_btn3: "Find Locations", about_label: "About Us", about_title: "PuraVida Workshop", about_years: "Years of Experience", about_text1: "At Taller PuraVida, founded in 1990, we have over three decades of experience providing reliable automotive solutions.", about_text2: "We know your vehicle is an essential part of your daily life, that's why we work with responsibility and commitment.", about_text3: "Our team is made up of trained technicians using modern tools and quality parts.", about_guarantee: "Warranty", about_equipment: "Equipment", services_label: "Our Services", services_title: "Main Services", services_subtitle: "Complete solutions for your vehicle care" },
+            pt: { nav_home: "Inicio", nav_about: "Sobre Nos", nav_services: "Servicos", nav_locations: "Localizacoes", nav_contact: "Contato", hero_badge1: "Servico Premium", hero_title1: "Servico de Qualidade Para Seu Carro", hero_desc1: "Mais de 30 anos de experiencia", hero_btn1: "Ver Servicos", hero_badge2: "Equipe Certificada", hero_title2: "Profissionais de Qualidade", hero_btn2: "Agendar Inspecao", hero_badge3: "4 Localizacoes", hero_title3: "Oficinas Em Diferentes Pontos", hero_btn3: "Encontrar Localizacoes", about_label: "Sobre Nos", about_title: "Oficina PuraVida", about_years: "Anos de Experiencia", services_label: "Nossos Servicos", services_title: "Servicos Principais", services_subtitle: "Solucoes completas para seu veiculo" },
+            fr: { nav_home: "Accueil", nav_about: "A Propos", nav_services: "Services", nav_locations: "Emplacements", nav_contact: "Contact", hero_badge1: "Service Premium", hero_title1: "Service de Qualite Pour Votre Voiture", hero_desc1: "Plus de 30 ans d'experience", hero_btn1: "Voir les Services", hero_badge2: "Equipe Certifiee", hero_title2: "Professionnels de Qualite", hero_btn2: "Planifier l'Inspection", hero_badge3: "4 Emplacements", hero_title3: "Ateliers Dans Differents Points", hero_btn3: "Trouver les Emplacements", about_label: "A Propos", about_title: "Atelier PuraVida", about_years: "Annees d'Experience", services_label: "Nos Services", services_title: "Services Principaux", services_subtitle: "Solutions completes pour votre vehicule" },
+            zh: { nav_home: "首页", nav_about: "关于我们", nav_services: "服务", nav_locations: "位置", nav_contact: "联系", hero_badge1: "优质服务", hero_title1: "为您的汽车提供优质服务", hero_desc1: "超过30年的经验", hero_btn1: "查看服务", hero_badge2: "认证团队", hero_title2: "优质专业人员", hero_btn2: "预约检查", hero_badge3: "4个位置", hero_title3: "全国各地的车间", hero_btn3: "查找位置", about_label: "关于我们", about_title: "PuraVida车间", about_years: "年经验", services_label: "我们的服务", services_title: "主要服务", services_subtitle: "为您的车辆提供完整解决方案" }
+        };
+
+        const langToggleBtn = document.getElementById('lang-toggle');
+        const langTextSpan = langToggleBtn ? langToggleBtn.querySelector('.lang-text') : null;
+        const availableLangs = Object.keys(translations);
+        let currentLang = localStorage.getItem('language') || 'es';
+
+        function getText(lang, key) {
+            if (translations[lang] && translations[lang][key]) return translations[lang][key];
+            if (translations['es'] && translations['es'][key]) return translations['es'][key];
+            return null;
+        }
+
+        function updateLanguage(lang) {
+            if (!translations[lang]) lang = 'es';
+            document.querySelectorAll('[data-i18n]').forEach(el => {
+                const key = el.getAttribute('data-i18n');
+                const value = getText(lang, key);
+                if (value) el.textContent = value;
+            });
+            if (langTextSpan) langTextSpan.textContent = lang.toUpperCase();
+            localStorage.setItem('language', lang);
+            currentLang = lang;
+        }
+
+        updateLanguage(currentLang);
+        if (langToggleBtn) {
+            langToggleBtn.addEventListener('click', () => {
+                const idx = availableLangs.indexOf(currentLang);
+                const nextLang = availableLangs[(idx + 1) % availableLangs.length];
+                updateLanguage(nextLang);
+            });
+        }
+
+        const slides = document.querySelectorAll('.hero-slide');
+        const indicators = document.querySelectorAll('.hero-indicator');
+        let currentSlide = 0;
+        let carouselInterval = null;
+
+        function goToSlide(index) {
+            slides.forEach((slide, i) => slide.classList.toggle('active', i === index));
+            indicators.forEach((ind, i) => {
+                const span = ind.querySelector('span');
+                if (i === index) {
+                    ind.classList.add('active');
+                    // Force reflow to reset the transition animation
+                    span.style.transition = 'none';
+                    span.style.transform = 'scaleX(0)';
+                    void span.offsetWidth;
+                    span.style.transition = 'transform';
+                    span.style.transform = 'scaleX(1)';
+                } else {
+                    ind.classList.remove('active');
+                    span.style.transform = 'scaleX(0)';
+                }
+            });
+            currentSlide = index;
+        }
+
+        function startCarousel() {
+            clearTimeout(carouselInterval);
+
+            let currentSlideElement = slides[currentSlide];
+            let video = currentSlideElement.querySelector('video');
+            let duration = 6000; // default duration
+
+            const advanceSlide = () => {
+                clearTimeout(carouselInterval);
+                goToSlide((currentSlide + 1) % slides.length);
+                startCarousel();
+            };
+
+            if (video) {
+                // Determine duration if metadata is ready
+                if (video.readyState >= 1) {
+                    duration = video.duration * 1000;
+                } else {
+                    // Fallback to 6s, update if metadata loads
+                    video.onloadedmetadata = () => {
+                        duration = video.duration * 1000;
+                        updateIndicator(duration);
+
+                        // Restart the timeout with the exact new duration
+                        clearTimeout(carouselInterval);
+                        carouselInterval = setTimeout(advanceSlide, duration + 200);
+                    };
+                }
+
+                video.currentTime = 0;
+                const playPromise = video.play();
+
+                if (playPromise !== undefined) {
+                    playPromise.then(_ => {
+                        // Video playing successfully. Ensure we have an onended handler.
+                        video.onended = advanceSlide;
+                    }).catch(error => {
+                        // Autoplay prevented or failed. Fallback to normal slide advance.
+                        console.log("Auto-play prevented", error);
+                    });
+                }
+            }
+
+            function updateIndicator(time) {
+                const activeIndicatorSpan = indicators[currentSlide].querySelector('span');
+                if (activeIndicatorSpan) {
+                    activeIndicatorSpan.style.transitionDuration = `${time}ms`;
+                }
+            }
+
+            updateIndicator(duration);
+
+            // Set a robust fallback timeout. 
+            // If it's a video, add a small 200ms buffer, otherwise use exact duration.
+            // If video.onended fires, it clears this timeout. If it stalls, this continues the loop.
+            carouselInterval = setTimeout(advanceSlide, video ? duration + 200 : duration);
+        }
+
+        indicators.forEach((indicator, index) => {
+            indicator.addEventListener('click', () => {
+                clearTimeout(carouselInterval);
+                goToSlide(index);
+                startCarousel();
+            });
+        });
+
+        goToSlide(0);
+        startCarousel();
+
+        // Mobile Menu
+        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+        const closeMenuBtn = document.getElementById('close-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const menuOverlay = document.getElementById('menu-overlay');
+
+        function openMenu() {
+            mobileMenu.classList.add('open');
+            menuOverlay.style.opacity = '1';
+            menuOverlay.style.pointerEvents = 'auto';
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeMenu() {
+            mobileMenu.classList.remove('open');
+            menuOverlay.style.opacity = '0';
+            menuOverlay.style.pointerEvents = 'none';
+            document.body.style.overflow = '';
+        }
+
+        if (mobileMenuBtn) mobileMenuBtn.addEventListener('click', openMenu);
+        if (closeMenuBtn) closeMenuBtn.addEventListener('click', closeMenu);
+        if (menuOverlay) menuOverlay.addEventListener('click', closeMenu);
+
+        document.querySelectorAll('#mobile-menu a').forEach(link => {
+            link.addEventListener('click', closeMenu);
+        });
+
+        // Navbar Scroll
+        const navbar = document.getElementById('navbar');
+        window.addEventListener('scroll', () => {
+            if (window.pageYOffset > 100) {
+                navbar.style.background = 'var(--glass-bg)';
+                navbar.style.backdropFilter = 'blur(20px)';
+                navbar.style.boxShadow = '0 4px 30px rgba(0,0,0,0.1)';
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.style.background = 'transparent';
+                navbar.style.backdropFilter = 'none';
+                navbar.style.boxShadow = 'none';
+                navbar.classList.remove('scrolled');
+            }
+        });
+
+        // Scroll Reveal
+        const revealElements = document.querySelectorAll('.reveal, .stagger-children');
+        const revealObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) entry.target.classList.add('visible');
+            });
+        }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
+        revealElements.forEach(el => revealObserver.observe(el));
+
+        // Contact Form
+        const contactForm = document.getElementById('contact-form');
+        if (contactForm) {
+            contactForm.addEventListener('submit', (e) => {
+                e.preventDefault();
+                const formData = new FormData(contactForm);
+                const name = formData.get('name');
+                const email = formData.get('email');
+                const phone = formData.get('phone');
+                const service = formData.get('service');
+                const message = formData.get('message');
+                const whatsappMessage = `Hola, soy ${name}.%0A%0ACorreo: ${email}%0ATeléfono: ${phone}%0AServicio: ${service}%0A%0AConsulta: ${message}`;
+                window.open(`https://wa.me/00000000000?text=${whatsappMessage}`, '_blank');
+                contactForm.reset();
+            });
+        }
+    </script>
+
+    <a href="https://nextwebcr.com" target="_blank" class="nextweb-badge">
+        <img src="logo.png" alt="NextWeb CR Logo">
+        <span>Desarrollado por <b>NextWeb CR</b></span>
+    </a>
+    <script src="js/security.js"></script>
+</body>
+
+</html>
